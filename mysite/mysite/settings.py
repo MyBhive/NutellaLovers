@@ -25,30 +25,22 @@ SECRET_KEY = 'django-insecure-u^k%3n@w&=@-jqy9uu+t7i@f*l504m!)ajl38t8(+(ikgam+r(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = []
-=======
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
->>>>>>> mise a jour
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
     'home.apps.HomeConfig',
-=======
->>>>>>> mise a jour
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-=======
     'purbeurre'
->>>>>>> mise a jour
+
 ]
 
 MIDDLEWARE = [
@@ -66,13 +58,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
-        'DIRS': [],
-=======
         'DIRS': [
             BASE_DIR / 'templates'
         ],
->>>>>>> mise a jour
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,15 +113,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-<<<<<<< HEAD
+
 LANGUAGE_CODE = 'fr-fr'
 
-TIME_ZONE = 'Europe/Paris'
-=======
-LANGUAGE_CODE = 'fr'
-
 TIME_ZONE = 'UTC'
->>>>>>> mise a jour
 
 USE_I18N = True
 
@@ -146,11 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-=======
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
@@ -158,6 +140,5 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
->>>>>>> mise a jour
 
 INTERNAL_IPS = ['127.0.0.1']

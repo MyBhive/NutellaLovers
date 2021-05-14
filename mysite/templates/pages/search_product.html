@@ -10,18 +10,14 @@
     <div class="results bg-white">
         <div class="container">
             <div class="row d-flex justify-content-between justify-content-lg-around text-center">
-            {% if not products %}
-            <p>Produit introuvale. Merci de relancer une recherche</p>
-            {% else %}
-            {% for product in page_num %}
-                <div class="p-2 mb-5 mx-lg-2 product-card bg-light border rounded col-lg-3 col-md-5 col-8 offset-2 offset-md-0">
+            {% for product in products %}
+                <div class="p-2 mb-5 mx-lg-2 product-card bg-light">
                     <img class="img-fluid product-img rounded mb-1" src="{{ product.image_product}}">
                     <a class="d-block mb-2"> {{ product.name_product }}</a>
                     <a class="btn btn-primary"> Substituer </a>
                     <div>{{ product.nutrition_grade }}</div>
                 </div>
             {% endfor %}
-            {% endif %}
             </div>
         </div>
     </div>

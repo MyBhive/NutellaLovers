@@ -24,11 +24,9 @@ def search_product(request):
     page_num = paginate.get_page(page)
 
     context = {
-        "products": page_num,
+        "page_num": page_num,
         "paginate": True,
-        "title": products.name_product,
-        "image": products.image_product,
-        "nutriscore": products.nutrition_grade,
+        "products": products
     }
 
     return render(request, "pages/search_product.html", context)
