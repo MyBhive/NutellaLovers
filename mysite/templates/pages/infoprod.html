@@ -1,33 +1,32 @@
-﻿{% extends 'pages/head_foot_nav.html' %}
+{% extends 'pages/head_foot_nav.html' %}
 
 {% block title %}PurBeurre{% endblock %}
 
 {% block contenu %}
-<header class="masthead text-center text-white d-flex" style="background: 50% 81% no-repeat url('{{ image }}') ">
-  <div class="container my-auto">
-    <div class="row-search">
+<header class="masthead text-center text-white d-flex" style="background: #86ebe6 50% 70% no-repeat url('{{ image }}') ">
+  <div class="container my-1">
       <div class="col-lg-10 mx-auto">
         <h1 class="text-uppercase">
-          <strong id="title_search">{{ page_title }}
-          <hr class="divider my-4" />
+          <h1 class="d-block text-center text-white text-uppercase font-weight-bold" style="margin-top: 4rem; text-shadow: 5px 1px 5px black, 0 0 25px black, 0 0 10px black;">{{ title }}</h1>
         </h1>
       </div>
-    </div>
   </div>
 </header>
-<section>
-  <div class="container my-auto">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">{{ title }}</h2>
+<section class="my-5">
+  <div class="container">
+    <div class="row h-100">
+      <div class="col-md-6 col-12 d-flex pb-5 pb-md-0 align-items-center">
+          <img class="img-fluid d-block mx-auto rounded" id="detail_nutri_score" src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ nutrition }}.svg"/>
+        </div>
+        <div class="col-md-6 col-12">
+          <img class="img-fluid d-block mx-auto rounded" id="detail_nutri" src="{{ image_nutrition }}"/>
+        </div>
+      </div>
+      <div class="text-center">
         <hr class="divider my-4" />
-        <img id="detail_nutri_score" src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ nutrition }}.svg"/>
-        <img id="detail_nutri" src="{{ image_nutrition }}"/>
-        <hr class="divider my-4" />
-        <a class="btn btn-outline-primary" href="{{ url }}">Voir la fiche complète sur OpenFoodFacts</a>
+        <a class="btn btn-outline-primary" target="_blank" href="{{ url }}">Voir la fiche complète sur OpenFoodFacts</a>
         <br>
       </div>
-    </div>
   </div>
 </section>
 {% endblock %}

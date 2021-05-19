@@ -1,25 +1,78 @@
-﻿{% extends 'pages/head_foot_nav.html' %}
+{% extends 'pages/head_foot_nav.html' %}
 
 {% block title %}Recherche{% endblock %}
 
+<!-- {% block css_link %}<link href="static/css/styles_1.css" rel="stylesheet" type="text/css"/>{% endblock %} -->
+
 {% block contenu %}
-<header class="masthead">
-    <div class="container header-title pb-5">
-        <h1 class="d-block text-center text-white">Les résultats de votre recherche</h1>
-    </div>
-    <div class="results bg-white">
-        <div class="container">
-            <div class="row d-flex justify-content-between justify-content-lg-around text-center">
-            {% for product in products %}
-                <div class="p-2 mb-5 mx-lg-2 product-card bg-light">
-                    <img class="img-fluid product-img rounded mb-1" src="{{ product.image_product}}">
-                    <a class="d-block mb-2"> {{ product.name_product }}</a>
-                    <a class="btn btn-primary"> Substituer </a>
-                    <div>{{ product.nutrition_grade }}</div>
-                </div>
-            {% endfor %}
+
+{% if not products or IndexError %}
+    <header class="masthead" style="height: 20rem; padding-top: 10rem;">
+        <div class="container header-title mt-5 pb-5">
+            <h1 class="d-block text-center text-white ">Votre recherche: {{ title }}</h1>
+    </header>
+    <section class="page-section">
+        <div class="bg-white text-center font-weight-bold">
+            <div class="container">
+                <h4>Produit introuvale. Merci de relancer une recherche</h4>
+                <br>
+                <p>(Vérifier les accents, majuscules ou l'orthographe)</p>
             </div>
         </div>
-    </div>
-</header>
-{% endblock %}
+    </section>
+{% else %}
+    <header class="masthead" style="background: #e8a75d 50% 70% no-repeat url('{{ image }}') ">
+        <div class="container header-title pb-5">
+            <h1 class="d-block text-center text-white text-uppercase font-weight-bold" style="margin-top: 4rem; text-shadow: 5px 1px 5px black, 0 0 25px black, 0 0 10px black;">{{ title }}</h1>
+        </div>
+    </header>
+    <section class="page-section">
+        <div class="bg-white">
+            <div class="container">
+                <h3 class="text-center font-weight-bold" style="margin-bottom: 1em;">Vous pouvez remplacer cet aliment par:</h3>
+                    <div class="row d-flex justify-content-between justify-content-lg-around text-center">
+                        {% for product in products %}
+                            <div class="card-muted overflow-hidden p-2 mb-5 mx-lg-2 col-lg-3 col-md-5 col-8 offset-2 offset-md-0" style="width:300px; margin-bottom: 4em;">
+                                <hr class="bg-dark"/>
+                                {% if product.nutrition_grade == "a" %}
+                                    <div class="d-flex flex-row-reverse">
+                                        <img src="/static/assets/img/nutri_a.png"  alt="nutri_score_a" WIDTH=100 HEIGHT=40 />
+                                    </div>
+                                {% elif product.nutrition_grade == "b" %}
+                                    <div>
+                                        <img src="/static/assets/img/nutri_b.png"  alt="nutri_score_b" WIDTH=100 HEIGHT=40 />
+                                    </div class="d-flex flex-row-reverse">
+                                    {% elif product.nutrition_grade == "c" %}
+                                    <div>
+                                        <img src="/static/assets/img/nutri_c.png"  alt="nutri_score_c" WIDTH=100 HEIGHT=40 />
+                                    </div class="d-flex flex-row-reverse">
+                                {% elif product.nutrition_grade == "d" %}
+                                    <div>
+                                        <img src="/static/assets/img/nutri_d.png"  alt="nutri_score_d" WIDTH=100 HEIGHT=40 />
+                                    </div class="d-flex flex-row-reverse">
+                                {% else %}
+                                    <div>
+                                        <img src="/static/assets/img/nutri_e.png"  alt="nutri_score_e" WIDTH=100 HEIGHT=40 />
+                                    </div class="d-flex flex-row-reverse">
+                                {% endif %}
+                                <div class="card-img-top">
+                                    <img style="height: 300px; object-fit: cover;" alt="{{ product.name_product }}" src="{{ product.image_product }}">
+                                </div>
+                                <div class="card-body" style="height: 200px;">
+                                    <a class="card-title" href="{% url 'product_info' description=product.id %}">{{ product.name_product }}</a>
+                                    <br>
+                                    <hr class="divider-muted"/>
+                                    <a href="bb" style="margin-bottom: 1em;">
+                                    <i class="fas fa-save fa-2x mb-0" aria-hidden="true"></i>   
+                                    Sauvegarder</a>
+                                </div>
+                                    <hr class="bg-dark"/>
+                            </div>
+                        {% endfor %}
+{% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+  
+  {% endblock %}

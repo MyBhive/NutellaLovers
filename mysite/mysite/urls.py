@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.urls import path, include
-from purbeurre.views import home, search_product
+from purbeurre.views import home, search_product, product_info
 
 
 urlpatterns = [
