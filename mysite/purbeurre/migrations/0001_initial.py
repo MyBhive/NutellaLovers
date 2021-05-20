@@ -5,7 +5,10 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
+    """
+    This Class show a migration which has been modified
+    (deleted because useless for the project)
+    """
     initial = True
 
     dependencies = [

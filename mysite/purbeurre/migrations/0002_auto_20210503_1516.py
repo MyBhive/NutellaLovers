@@ -6,6 +6,10 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
+    """
+    Migration of the database build in
+    purbeurre/management/commands/create_db
+    """
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
