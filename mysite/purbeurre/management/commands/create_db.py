@@ -1,15 +1,16 @@
 # coding: utf-8
 import requests
 
-
 from django.core.management.base import BaseCommand
 from django.db.utils import DataError, IntegrityError
+
 from purbeurre.models import ProductInfo, CategoryProduct
 
 
 class Command(BaseCommand):
 	"""
 	This class handle the informations from OFF API.
+	CATEGORIES: Constant data for the purbeurre application
 	"""
 	CATEGORIES = [
 		"pates-a-tartiner",
@@ -26,7 +27,12 @@ class Command(BaseCommand):
 
 	def insert_data(self):
 		"""
-		Method to insert the categories and the products in the database
+		Method to :
+		- insert the categories from CONSTANT CATEGORY
+		inside the category table
+		- take from openfoodfacts API the product
+		- insert a certain amount of product inside the product table
+		depending of the category they
 		"""
 	for category in CATEGORIES:
 		category_name = CategoryProduct.objects.get_or_create(name_category=category)
@@ -51,7 +57,7 @@ class Command(BaseCommand):
 				nutrition_grade = product['nutrition_grades']
 				image_product = product['image_front_url']
 				url_product = product['url']
-				image_nutrition = product["image_nutrition_small_url"]
+				image_nutrition = product['image_nutrition_small_url']
 
 				ProductInfo.objects.get_or_create(
 					name_product=name_product,

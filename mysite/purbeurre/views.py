@@ -1,30 +1,37 @@
 # coding: utf-8
+
 from django.shortcuts import render
 from django.core.paginator import Paginator
+
 from purbeurre.models import ProductInfo
 
 
 def home(request):
-    return render(request, "pages/home.html")
+    """Method to render the homepage template"""
+    return render(request, 'pages/home.html')
 
 
 def legal_notices(request):
-    return render(request, "pages/mentions_legales.html")
+    """Method to render the legal notices template"""
+    return render(request, 'pages/mentions_legales.html')
 
 
 def search_product(request):
-    # je récupère l'input utilisateur
-    research_user = request.GET.get("user_research")
+    """Method to:
+    - get the user input (question)
+    - look for 6 substitutes with better nutri score in the database
+    - paginate the result to render it on the search_product template
+    """
+    research_user = request.GET.get('user_research')
     try:
-        # je cherche les produits qui peuvent convenir à la demande
-        result = ProductInfo.objects.filter(name_product__contains=research_user)[0]
+        result = ProductInfo.objects.filter(
+            name_product__contains=research_user
+        )[0]
         products = ProductInfo.objects.filter(
             category=result.category,
             nutrition_grade__lt=result.nutrition_grade) \
-            .order_by("nutrition_grade")[:6]
-        # afficher 6 produits sur la page
+            .order_by('nutrition_grade')[:6]
         paginate = Paginator(products, 6)
-        # récupérer la page où l'on veut afficher
         page = request.GET.get('page')
         page_num = paginate.get_page(page)
 
@@ -38,12 +45,18 @@ def search_product(request):
         }
 
     except IndexError:
-        return render(request, "pages/search_product.html", {"title": research_user})
+        return render(
+            request,
+            'pages/search_product.html',
+            {'title': research_user})
 
-    return render(request, "pages/search_product.html", context)
+    return render(request, 'pages/search_product.html', context)
 
 
 def product_info(request, description):
+    """
+    Method to render the products informations template
+    """
     product_infos = ProductInfo.objects.get(id=description)
 
     context = {
@@ -55,4 +68,4 @@ def product_info(request, description):
         "url": product_infos.url_product
     }
 
-    return render(request, "pages/infoprod.html", context)
+    return render(request, 'pages/infoprod.html', context)
