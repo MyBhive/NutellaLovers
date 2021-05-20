@@ -1,0 +1,23 @@
+﻿{% extends 'pages/head_foot_nav.html' %}
+
+{% block title %}Log in{% endblock %}
+
+
+{% block contenu %}
+    <header class="masthead" style="background-image: url(/static/assets/img/fond_account.jpg);">
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card my-auto" style="width: auto;">
+                    <div class="d-flex justify-content-center pb-4 text-white">
+                        <h1 class="d-block text-center mb-5 text-white" 
+                        style="margin-top: 4rem; text-shadow: 5px 1px 5px black, 0 0 25px black, 0 0 10px black;">
+                        Ahoy {{user.username}}</h1>
+                    </div>
+                    <div class="results text-center">
+                        <p class="border rounded d-inline p-2 bg-light">mail : {{user.email}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
