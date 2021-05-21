@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 
-from .models import ProductInfo
+from purbeurre.models import ProductInfo
 
 
 def home(request):

@@ -4,7 +4,7 @@ import requests
 from django.core.management.base import BaseCommand
 from django.db.utils import DataError, IntegrityError
 
-from mysite.purbeurre.models import ProductInfo, CategoryProduct
+from purbeurre.models import ProductInfo, CategoryProduct
 
 
 class Command(BaseCommand):

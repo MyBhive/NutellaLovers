@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..purbeurre.models import UserSavingProduct, ProductInfo
+from purbeurre.models import UserSavingProduct, ProductInfo
 from .forms import SignInForm
 
 
