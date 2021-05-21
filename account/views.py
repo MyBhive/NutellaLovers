@@ -54,7 +54,7 @@ def log_in(request):
 def log_out(request):
     """django method to log out from your user account"""
     logout(request)
-    return redirect('login')
+    return redirect('home')
 
 
 @login_required(login_url='login')
