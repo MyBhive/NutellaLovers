@@ -2,7 +2,26 @@
 
 > This app will help you to find an healthier product to the one you like! Through the creation of a user account, you can save the substitute in your favorite.
 >
-> 
+> Categories of product used for this project:
+>
+> - pates à tartiner
+> - biscuits
+> - pizzas
+> - chocolats
+> - boissons gazeuses
+> - pains
+> - yaourts
+> - viandes
+> - soupes
+> - glace
+>
+> For fun you can try to search : 
+>
+> - Nutella
+> - cookies
+> - courgette
+> - potiron
+> - etc
 
 ---------------------------------------------------------------------------------------------
 
