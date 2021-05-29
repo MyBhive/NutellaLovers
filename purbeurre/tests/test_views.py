@@ -62,5 +62,8 @@ class TestViews(TestCase):
             .order_by("nutrition_grade")[0]
         self.assertEqual(products.name_product, 'Duo')
 
-    # def test_search_product_index_error(self):
-    # def test_render_product_informations(self):
+    def test_search_product_not_find(self):
+        pass
+
+    def test_render_product_informations(self):
+        pass

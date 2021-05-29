@@ -4,7 +4,7 @@ from django.urls import reverse, resolve
 from account.views import \
     sign_in, \
     log_in, \
-    my_account
+    my_account, my_favorites_view
 
 
 class TestUrls(SimpleTestCase):
@@ -21,9 +21,10 @@ class TestUrls(SimpleTestCase):
         url = reverse("my_account")
         self.assertEquals(resolve(url).func, my_account)
 
-    """
-        def test_my_favorites_url_resolves(self):
-        url = reverse("my_favorites_view")
-        self.assertEquals(resolve(url).func, 
-        my_favorites_view)
-    """
+    def test_my_favorites_url_resolves(self):
+        pass
+
+    def test_log_out_url_resolves(self):
+        pass
+
+
