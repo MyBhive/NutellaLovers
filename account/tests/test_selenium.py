@@ -39,6 +39,7 @@ class TestForm(LiveServerTestCase):
         driver.quit()
 
     def test_research_product(self):
+         # dois je afficher un produit?
         driver = webdriver.Chrome('account/tests/chromedriver.exe')
         driver.implicitly_wait(30)
         driver.get('%s%s' % (self.live_server_url, '/'))

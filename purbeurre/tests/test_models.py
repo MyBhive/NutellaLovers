@@ -2,11 +2,26 @@
 
 from purbeurre.models import CategoryProduct, ProductInfo, UserSavingProduct
 
+"""
+class BaseModelTestCase(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super(BaseModelTestCase, cls).setUpClass()
+        cls.category = CategoryProduct(name_category='pizzas')
+        cls.category.save()
 
-class TestModels(TestCase):
-    def setUp(self):
-        pass
+        cls.product = ProductInfo(category=cls.category, name_product='Pizza 4 stagioni')
+        cls.product.save()
 
+
+class TestCatProdModels(BaseModelTestCase):
+
+    def test_category_created_properly(self):
+        self.assertEqual(self.category.name_category, 'pizzas')
+        self.assertEqual(True, self.category in self.product.objects.filter(category='pizzas'))
+
+"""
+""" 
     def test_category_product_model(self):
         self.category = CategoryProduct(
             name_category="pizzas"
@@ -19,7 +34,6 @@ class TestModels(TestCase):
         )
         self.assertEquals(str(self.product_info), self.product_info.name_product)
 
-"""
     def test_user_saving_product_model(self):
         user_saving = UserSavingProduct(
             username='2',

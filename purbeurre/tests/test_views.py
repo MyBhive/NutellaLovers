@@ -63,7 +63,11 @@ class TestViews(TestCase):
         self.assertEqual(products.name_product, 'Duo')
 
     def test_search_product_not_find(self):
-        pass
+        pass #message d'erreur écrit en html
 
     def test_render_product_informations(self):
-        pass
+        #ne marche pas
+        response = self.client.get('search_product')
+        prod = ProductInfo.objects.get(id=self.prod_info.id)
+
+

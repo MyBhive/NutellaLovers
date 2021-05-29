@@ -1,6 +1,7 @@
 from django.test import TestCase
 import pytest
 import requests
+import urllib.request
 
 from purbeurre.models import CategoryProduct, ProductInfo
 
