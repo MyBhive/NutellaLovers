@@ -20,28 +20,47 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CategoryProduct',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True,
+                                        serialize=False,
+                                        verbose_name='ID')),
                 ('name_category', models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
             name='ProductInfo',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True,
+                                        serialize=False,
+                                        verbose_name='ID')),
                 ('name_product', models.CharField(max_length=200)),
-                ('nutrition_grade', models.CharField(default='none', max_length=1)),
+                ('nutrition_grade', models.CharField(default='none',
+                                                     max_length=1)),
                 ('image_product', models.URLField(default='None')),
                 ('url_product', models.URLField(default='None')),
                 ('image_nutrition', models.URLField(default='None')),
-                ('category', models.ForeignKey(default='None', on_delete=django.db.models.deletion.CASCADE, to='purbeurre.categoryproduct')),
+                ('category', models.ForeignKey(
+                    default='None',
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='purbeurre.categoryproduct')
+                 ),
             ],
         ),
         migrations.CreateModel(
             name='UserSavingProduct',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='purbeurre.productinfo')),
-                ('username', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True,
+                                        serialize=False,
+                                        verbose_name='ID')),
+                ('product', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to='purbeurre.productinfo')),
+                ('username', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to=settings.AUTH_USER_MODEL)
+                 ),
             ],
         ),
         migrations.DeleteModel(
