@@ -12,58 +12,28 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 
 from pathlib import Path
-import dj_database_url
+
 import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from django.conf.global_settings import DATABASES
+# from django.conf.global_settings import DATABASES
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+# Quick-start development settings - unsuitable for production/
+# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-u^k%3n@w&=@-jqy9uu+t7i@f*l504m!)ajl38t8(+(ikgam+r('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'DEVELOPMENT':
-    DEBUG = True
-    # Database
-    # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+DEBUG = False if os.environ.get('ENV') == 'production' else True
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': os.getenv('DB_PORT'),
-        }
-    }
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "nutellalovers.herokuapp.com"]
 
-else:
-    DEBUG = False
+# Application definitions
 
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'] = db_from_env
-
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "nutellalovers.herokuapp.com"]
-
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -110,22 +80,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-"""
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'purbeurre',
         'USER': 'postgres',
         'PASSWORD': '007',
         'HOST': 'localhost',
-        'PORT': 5432,
+        'PORT': '5432',
     }
 }
-"""
-
 
 
 # Password validation
@@ -168,10 +135,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -182,4 +153,3 @@ INTERNAL_IPS = ['127.0.0.1']
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-
