@@ -13,5 +13,6 @@ urlpatterns = [
     path('mes_favoris/<str:product_id>/',
          views.save_in_favorite,
          name='save_in_favorite'),
-    path('mes_favoris', views.my_favorites_view, name="my_favorites_view")
+    path('mes_favoris', views.my_favorites_view,
+         name="my_favorites_view")
 ]
