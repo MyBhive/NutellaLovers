@@ -38,7 +38,6 @@ class TestViews(TestCase):
 
     def test_legal_notices_view(self):
         response = self.client.get(self.legal_notices_url)
-
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'pages/mentions_legales.html')
 
