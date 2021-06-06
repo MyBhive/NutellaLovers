@@ -174,7 +174,7 @@ class TestSeleniumUserPath(LiveServerTestCase):
             image_nutrition="www.img_nutri.com"
         )
 
-    def test_form_sign_in(self):
+    def test_user_journey(self):
         # sign_in
         driver = webdriver.Chrome('account/tests/chromedriver.exe')
         driver.implicitly_wait(30)
