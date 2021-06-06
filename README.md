@@ -161,4 +161,4 @@ https://github.com/MyBhive/NutellaLovers.git
 
 > MyBhive 
 
-*My most sincere thanks to Geoffrey who helped me to get motivated* 
+*My most sincere thanks to Geoffrey. He helped me when I was lost, teaching me the logic of testing. He also support me spychologically in my difficulties that I don't depress and gain weight eating peanuts butter with a spoon!
