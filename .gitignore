@@ -135,3 +135,5 @@ dmypy.json
 env
 keep.py
 >>>>>>> mise a jour
+
+mysite/settings/production.py
