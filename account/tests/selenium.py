@@ -1,6 +1,5 @@
 ﻿
 from purbeurre.models import ProductInfo, CategoryProduct
-from django.test import LiveServerTestCase
 from django.contrib.auth import get_user_model
 from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase

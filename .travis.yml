@@ -9,6 +9,9 @@ branches:
   only:
     - staging
 
+addons:
+  chrome: stable
+
 install:
   - pip install -r requirements.txt
 
@@ -20,8 +23,9 @@ services:
 
 before_script:
   - wget https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip -d /home/travis/build/MyBhive/Nutellalovers/account/tests
-  - export CHROME_BIN=chromium-browser
+  - unzip chromedriver_linux64.zip -d /usr/local/bin/chromedriver
+  - export PATH="$PATH:/usr/local/bin/chromedriver"
+
 
 script:
   - python manage.py test
