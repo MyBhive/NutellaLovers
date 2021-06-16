@@ -13,12 +13,11 @@ import os
 
 from pathlib import Path
 
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # from django.conf.global_settings import DATABASES
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production/
@@ -28,10 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'django-insecure-u^k%3n@w&=@-jqy9uu+t7i@f*l504m!)ajl38t8(+(ikgam+r('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
@@ -89,10 +85,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'NutellaLovers',
-        'USER': 'delmiel',
-        'PASSWORD': 'atchoum2',
-        'HOST': 'localhost',
+        'NAME': 'purbeurre',
+        'USER': 'postgres',
+        'PASSWORD': '007',
+        'HOST': '',
         'PORT': '5432'
     }
 }
@@ -141,7 +137,3 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INTERNAL_IPS = ['127.0.0.1']
-
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
