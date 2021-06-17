@@ -1,9 +1,9 @@
-﻿
-from purbeurre.models import ProductInfo, CategoryProduct
-from django.contrib.auth import get_user_model
+﻿from django.contrib.auth import get_user_model
 from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 import time
+
+from purbeurre.models import ProductInfo, CategoryProduct
 
 User = get_user_model()
 
