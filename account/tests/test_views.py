@@ -145,5 +145,3 @@ class SaveAndViewTestCaseOfFavorite(TestCase):
     def test_my_favorite_view(self):
         response = self.client.get(reverse('my_favorites_view'))
         self.assertEquals(response.status_code, 302)
-
-
