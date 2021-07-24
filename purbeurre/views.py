@@ -4,6 +4,11 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 
 from purbeurre.models import ProductInfo
+import logging
+
+# ...
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 def home(request):
@@ -22,6 +27,10 @@ def search_product(request):
     - look for 6 substitutes with better nutri score in the database
     - paginate the result to render it on the search_product template
     """
+    logger.info('New search', exc_info=True, extra={
+        # Optionally pass a request and we'll grab any information we can
+        'request': request,
+    })
     research_user = request.GET.get('user_research')
     try:
         result = ProductInfo.objects.filter(
