@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'purbeurre',
     'account',
+
 ]
 
 MIDDLEWARE = [
@@ -88,9 +89,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'NutellaLovers',
-        'USER': 'delmiel',
-        'PASSWORD': 'atchoum2',
+        'NAME': 'purbeurre',
+        'USER': 'postgres',
+        'PASSWORD': '007',
         'HOST': 'localhost',
         'PORT': '5432'
     }
