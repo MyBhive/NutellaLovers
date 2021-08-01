@@ -13,7 +13,7 @@
     <section class="page-section bg-white">
         <div class="text-center font-weight-bold">
             <div class="container">
-                <h4>Produit introuvale. Merci de relancer une recherche</h4>
+                <h4>Produit introuvable. Merci de relancer une recherche</h4>
                 <br>
                 <p>(Vérifier les accents, majuscules ou l'orthographe)</p>
             </div>
@@ -56,7 +56,7 @@
                             <div class="card-img-top">
                                 <img style="height: 300px; object-fit: cover;" alt="{{ product.name_product }}" src="{{ product.image_product }}">
                             </div>
-                            <div class="card-body" style="height: 200px;">
+                            <div class="card-body" style="height: 150px;">
                                 <a class="card-title" href="{% url 'product_info' description=product.id %}">{{ product.name_product }}</a>
                                 <br>
                                 <hr class="divider-muted"/>
