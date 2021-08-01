@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from django.db import models
-from django.contrib.auth.models import User
+from account.models import CostumUser
 
 
 class CategoryProduct(models.Model):
@@ -37,5 +37,5 @@ class UserSavingProduct(models.Model):
     Class to create a table to save the product
     (class Name) on the user account
     """
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.ForeignKey(CostumUser, on_delete=models.CASCADE)
     product = models.ForeignKey(ProductInfo, on_delete=models.CASCADE)
