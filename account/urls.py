@@ -14,5 +14,8 @@ urlpatterns = [
          views.save_in_favorite,
          name='save_in_favorite'),
     path('mes_favoris', views.my_favorites_view,
-         name="my_favorites_view")
+         name="my_favorites_view"),
+    path('delete_favorite/<str:fav_id>',
+         views.delete_favorite,
+         name='delete-favorite')
 ]

@@ -81,11 +81,27 @@ def save_in_favorite(request, product_id):
 
     except ObjectDoesNotExist:
         UserSavingProduct.objects.create(
-            username_id=request.user.id,
+            username_id=user.id,
             product_id=product_id
         )
 
         return redirect('my_favorites_view')
+
+
+@login_required(login_url='login')
+def delete_favorite(request, fav_id):
+    """
+    Method to delete a product from the favorite list
+    """
+    user = request.user
+    fav_to_delete = UserSavingProduct.objects.get(
+        username_id=user.id,
+        product_id=fav_id
+    )
+    fav_to_delete.delete()
+    messages.success(request, 'le produit a été supprimé avec succès')
+
+    return redirect('my_favorites_view')
 
 
 @login_required(login_url='login')
