@@ -46,7 +46,7 @@ class TestViews(TestCase):
         response = self.client.get('/recherche',
                                    data={'user_research': research})
         self.assertContains(response,
-                            text='Produit introuvale.'
+                            text='Produit introuvable.'
                                  ' Merci de relancer une recherche')
 
     def test_find_substitute_in_database(self):
