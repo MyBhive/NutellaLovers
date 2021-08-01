@@ -3,9 +3,10 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 from purbeurre.models import UserSavingProduct, ProductInfo, CategoryProduct
-from account.views import save_in_favorite
+from account.views import save_in_favorite, delete_favorite
 
 from django.test import LiveServerTestCase
+from django.contrib import messages
 from selenium import webdriver
 import time
 
@@ -107,7 +108,7 @@ class LoginViewTestCase(TestCase):
         self.assertEquals(response.status_code, 302)
 
 
-class SaveAndViewTestCaseOfFavorite(TestCase):
+class SaveOrDeleteAndViewTestCaseOfFavorite(TestCase):
 
     def setUp(self):
         self.client = Client()
@@ -145,6 +146,25 @@ class SaveAndViewTestCaseOfFavorite(TestCase):
         self.assertEqual(pre_number_product, 0)
         save_in_favorite(request, self.substitute.id)
         self.assertEqual(pre_number_product + 1, 1)
+
+    def test_delete_favorite_success(self):
+        request = self.factory.get('/')
+        request.user = self.u
+        request._messages = messages.storage.default_storage(request)
+        pre_number_product = len(UserSavingProduct.objects.filter(
+            product=self.substitute.id))
+        self.assertEqual(pre_number_product, 0)
+        save_in_favorite(request, self.substitute.id)
+        after_add_product = len(UserSavingProduct.objects.filter(
+            product=self.substitute.id))
+        self.assertEqual(after_add_product, 1)
+        delete_favorite(request, self.substitute.id)
+        after_delete_prod = len(UserSavingProduct.objects.filter(
+            product=self.substitute.id))
+        self.assertEqual(after_delete_prod, 0)
+
+    def test_delete_favorite_fail(self):
+        pass
 
     def test_my_favorite_view(self):
         response = self.client.get(reverse('my_favorites_view'))
