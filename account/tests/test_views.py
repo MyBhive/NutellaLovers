@@ -164,6 +164,26 @@ class SaveOrDeleteAndViewTestCaseOfFavorite(TestCase):
         self.assertEqual(after_delete_prod, 0)
 
     def test_delete_favorite_fail(self):
+        request = self.factory.get('/')
+        request.user = self.u
+        request._messages = messages.storage.default_storage(request)
+        pre_number_product = len(UserSavingProduct.objects.filter(
+            product=self.substitute.id))
+        self.assertEqual(pre_number_product, 0)
+        save_in_favorite(request, self.substitute.id)
+        after_add_product = len(UserSavingProduct.objects.filter(
+            product=self.substitute.id))
+        self.assertEqual(after_add_product, 1)
+        delete_favorite(request, 999999999)
+        after_delete_prod = len(UserSavingProduct.objects.filter(
+            product=self.substitute.id))
+        self.assertEqual(after_delete_prod, 1)
+
+    def test_delete_favorite_fail_status_code_404(self):
+        response = self.client.get(f'/delete_favorite/{self.substitute.id}/')
+        self.assertEqual(response.status_code, 404)
+
+    def test_sign_in_date(self):
         pass
 
     def test_my_favorite_view(self):
