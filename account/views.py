@@ -94,14 +94,21 @@ def delete_favorite(request, fav_id):
     Method to delete a product from the favorite list
     """
     user = request.user
-    fav_to_delete = UserSavingProduct.objects.get(
-        username_id=user.id,
-        product_id=fav_id
-    )
-    fav_to_delete.delete()
-    messages.success(request, 'le produit a été supprimé avec succès')
+    try:
+        fav_to_delete = UserSavingProduct.objects.get(
+            username_id=user.id,
+            product_id=fav_id
+        )
+        fav_to_delete.delete()
+        messages.success(request, 'le produit a été supprimé avec succès')
 
-    return redirect('my_favorites_view')
+        return redirect('my_favorites_view')
+
+    except ObjectDoesNotExist:
+
+        messages.success(request, 'Produit inexistant dans vos favoris')
+
+        return redirect('my_favorites_view')
 
 
 @login_required(login_url='login')
