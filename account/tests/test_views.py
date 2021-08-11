@@ -27,7 +27,8 @@ class RegisterViewTestCase(TestCase):
                                     {'username': 'nico2',
                                      'email': "nico2@gmail.com",
                                      'password1': '123nousironsaubois!',
-                                     'password2': '123nousironsaubois!'})
+                                     'password2': '123nousironsaubois!',
+                                     'date_of_birth': '10/08/1988'})
 
         self.assertEquals(response.status_code, 302)
         self.assertEqual(len(User.objects.filter(username='nico2')), 1)
@@ -37,7 +38,8 @@ class RegisterViewTestCase(TestCase):
                                     {'username': 'cfe',
                                      'email': "nico2@gmail.com",
                                      'password1': '123nousironsaubois!',
-                                     'password2': '123nousironsaubois!'})
+                                     'password2': '123nousironsaubois!',
+                                     'date_of_birth': '10/08/1988'})
         self.assertEqual(response.context['form'].errors['username'][0],
                          'Un utilisateur avec ce nom existe déjà.')
         self.assertEqual(response.status_code, 200)
@@ -47,7 +49,8 @@ class RegisterViewTestCase(TestCase):
                                     {'username': 'bob',
                                      'email': 'bob@cfe.com',
                                      'password1': '123nousironsaubois!',
-                                     'password2': '007nousironsaubois!'})
+                                     'password2': '007nousironsaubois!',
+                                     'date_of_birth': '10/08/1988'})
         self.assertEqual(response.context['form'].errors['password2'][0],
                          'Les deux mots de passe ne correspondent pas.')
 
@@ -183,9 +186,6 @@ class SaveOrDeleteAndViewTestCaseOfFavorite(TestCase):
         response = self.client.get(f'/delete_favorite/{self.substitute.id}/')
         self.assertEqual(response.status_code, 404)
 
-    def test_sign_in_date(self):
-        pass
-
     def test_my_favorite_view(self):
         response = self.client.get(reverse('my_favorites_view'))
         self.assertEquals(response.status_code, 302)
@@ -224,6 +224,7 @@ class TestSeleniumUserPath(LiveServerTestCase):
         driver.find_element_by_name('email').send_keys('selenium@gmail.com')
         driver.find_element_by_name('password1').send_keys('champignon1')
         driver.find_element_by_name('password2').send_keys('champignon1')
+        driver.find_element_by_name('date_of_birth').send_keys('10/08/1988')
         driver.find_element_by_id('valid_sign_in').click()
         self.assertEqual(driver.title, 'Log in')
         self.assertEqual(len(User.objects.all()), 1)
