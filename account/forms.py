@@ -8,8 +8,8 @@ class SignInForm(UserCreationForm):
     """Create form for sign_in"""
     username = forms.CharField()
     email = forms.EmailField()
-    date_added = models.DateTimeField(auto_now_add=True)
+    date_of_birth = forms.DateField()
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2', 'date_of_birth']
